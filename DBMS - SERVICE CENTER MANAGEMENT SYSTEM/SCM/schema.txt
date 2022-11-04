@@ -1,0 +1,7 @@
+create database vehicle_service_center;
+use vehicle_service_center;
+create table customer (cust_id int primary key auto_increment, cust_name varchar(20), cust_address varchar(20), cust_phone varchar(20), cust_vehicle_no varchar(10));
+create table vehicle(vehicle_number varchar(10) primary key, vehicle_type varchar(20), RCbook varchar(20));
+create table parts(part_no int primary key, part_name varchar(20), part_cost int, par_manufacturedate DATE, part_warrantyperiod DATE);
+create table employee(emp_id int primary key auto_increment, emp_name varchar(20), emp_address varchar(20), emp_phone varchar(20), emp_salary int,emp_emailid varchar(20));
+create table invoice(invoice_number int primary key, invoice_date DATE, invoice_amount int);

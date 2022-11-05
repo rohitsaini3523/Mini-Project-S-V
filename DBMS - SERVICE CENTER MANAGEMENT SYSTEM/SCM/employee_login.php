@@ -1,15 +1,3 @@
-<?php
-session_start();
-if (isset($_SESSION["email"]) && $_SESSION["pass"] === true) {
-    header("location: profile.php");
-    exit;
-}
-else
-{
-    $_SESSION["email"] = false;
-    $_SESSION["pass"] = false;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,8 +17,8 @@ else
     <center>
         <h1 id="form"></h1>
         <div class="form" style="width:60% ;">
-            <h1 style=" color:black; font-size: large;" id="heading">Login</h1>
-            <form name="myform" method="post" action="profile.php">
+            <h1 style=" color:black; font-size: large;" id="heading">Employee Login</h1>
+            <form name="myform" method="post" action="employee_profile.php">
                 <div class="form_design" id="email">
                     <input type="email" name="femail" id="" required placeholder="Enter E-mail here"><b><br><span class="form_error"> </span></b>
                 </div>
@@ -38,7 +26,6 @@ else
                     <input type="password" name="fpass" id="" required placeholder="Password"><b><br><span class="form_error"></span></b>
                 </div>
                 <input type="submit" class="button" value="Login" id="submitbutton">
-                <h1 style=" color:black; font-size: large;" id="checker"><a href="regestration.php" style="color:black ;text-decoration:none;">Not Registered?</a></h1>
     </center>
     </div>
     </div>

@@ -17,19 +17,19 @@
     <center>
         <h1 id="form"></h1>
         <div class="form" style="width:60% ;">
-            <h1 style=" color:black; font-size: large;" id="heading">Customer Vehicle Regestration</h1>
+            <h1 style=" color:black; font-size: large;" id="heading">Vehicle Regestration</h1>
             <form name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
-                <div class="form_design" id="vehicle_number">
-                    <input type="text" name="vehicle_number" id="" required placeholder="Vehicle number"><b><br><span class="form_error"></span></b>
+                <div class="form_design" id="">
+                    <input type="text" name="vehicle_number" id="vehicle_number" required placeholder="Vehicle Number"><b><br><span class="form_error"></span></b>
                 </div>
-                <div class="form_design" id="vehicle_type">
-                    <input type="text" name="vehicle_type" id="" required placeholder="Vehicle type"><b><br><span class="form_error"></span></b>
+                <div class="form_design" id="">
+                    <input type="text" name="vehicle_type" id="vehicle_type" required placeholder="Vehicle Type"><b><br><span class="form_error"></span></b>
                 </div>
-                <div class="form_design" id="RCbook">
-                    <input type="text" name="RCbook" id="" required placeholder="RCbook"><b><br><span class="form_error"></span></b>
+                <div class="form_design" id="">
+                    <input type="text" name="RCbook" id="RCbook" required placeholder="RC Book Number"><b><br><span class="form_error"></span></b>
                 </div>
-                <div class="form_design" id="customer_id">
-                    <input type="text" name="customer_id" id="" required placeholder="Customer id"><b><br><span class="form_error"></span></b>
+                <div class="form_design" id="">
+                    <input type="text" name="customer_id" id="customer_id" required placeholder="Customer ID"><b><br><span class="form_error"></span></b>
                 </div>
                 <input type="submit" class="button" value="Submit" id="submitbutton">
     </center>
@@ -37,7 +37,7 @@
     </div>
     </form>
     <?php
-
+    $vehicle_number = $vehicle_type = $RCbook = $customer_id = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $vehicle_number = test_input($_POST["vehicle_number"]);
         $vehicle_type = test_input($_POST["vehicle_type"]);
@@ -52,24 +52,18 @@
         $data = htmlspecialchars($data);
         return $data;
     }
-    ?>
-    <?php
-    $cust_id = $cust_name = $cust_address = $cust_phone = $cust_vehicle_no = "";
-    if ($cust_id != "" && $cust_name != "" && $cust_address != "" && $cust_phone != "" && $cust_vehicle_no != "") {
+    if ($vehicle_number != "" && $vehicle_type != "" && $RCbook != "" && $customer_id != "") {
         $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
         if ($conn == false) {
             die("Connection Failed: " . $conn->connect_error);
         }
-        $query = "INSERT into customer VALUES('$cust_id','$cust_name','$cust_address','$cust_phone','$cust_vehicle_no');";
-        try {
-            if (mysqli_query($conn, $query) == true) {
-                throw new Exception('SuccesFully Regestered');
-            } else {
-                echo '<script>alert("Already Exists")</script>';
-            }
-        } catch (Exception $e) {
-            echo '<script>alert("SuccesFully Regestered")</script>';
-            header("Location:vehicle_regestration.php");
+        $query = "INSERT into vehicle VALUES('$vehicle_number','$vehicle_type','$RCbook','$customer_id');";
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            echo "<script>alert('Vehicle Regestration Successful');</script>";
+            header("Location: employee_profile.php");
+        } else {
+            echo "<script>alert('Vehicle Regestration Failed');</script>";
         }
     }
     ?>

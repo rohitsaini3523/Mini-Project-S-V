@@ -17,10 +17,10 @@
     <center>
         <h1 id="form"></h1>
         <div class="form" style="width:60% ;">
-            <h1 style=" color:black; font-size: large;" id="heading">Search Part By ID</h1>
+            <h1 style=" color:black; font-size: large;" id="heading">Search Invoice by Invoice-Number</h1>
             <form name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
                 <div class="form_design" id="" style="padding:1%;">
-                    <h1>Enter Part Id: </h1> <input type="text" name="part_id" id="part_id" required><b><br><span class="form_error"></span></b>
+                    <h1>Enter Invoice Number: </h1> <input type="text" name="invoice_number" id="invoice_number" required><b><br><span class="form_error"></span></b>
                 </div>
                 <input type="submit" class="button" value="Submit" id="submitbutton">
     </center>
@@ -28,9 +28,9 @@
     </div>
     </form>
     <?php
-    $part_id = $part_name = $part_cost = $part_manufacturedate = $part_warrantyperiod = "";
+    $invoice_number = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $part_id = test_input($_POST["part_id"]);
+        $invoice_number = test_input($_POST["invoice_number"]);
     }
 
     function test_input($data)
@@ -40,30 +40,30 @@
         $data = htmlspecialchars($data);
         return $data;
     }
-    if ($part_id != "") {
+    if ($invoice_number != "") {
         $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
         if ($conn == false) {
             die("Connection Failed: " . $conn->connect_error);
         }
-        $query = "select * from parts where part_no = $part_id;";
+        $query = "select * from invoice where invoice_number = $invoice_number;";
         $result = $conn->query($query);
         $result = mysqli_query($conn, $query);
         echo "<center>";
         echo "<table border='1' style='width:60% ;'>";
         echo "<tr>";
-        echo "<th>Part No</th>";
-        echo "<th>Part Name</th>";
-        echo "<th>Part Cost</th>";
-        echo "<th>Part Manufacture Date</th>";
-        echo "<th>Part Warranty Period</th>";
+        echo "<th>Invoice Number</th>";
+        echo "<th>Invoice Date</th>";
+        echo "<th>Invoice Amount</th>";
+        echo "<th>Vehicle number</th>";
+        echo "<th>Employee Id</th>";
         echo "</tr>";
         while ($row = mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td>" . $row['part_no'] . "</td>";
-            echo "<td>" . $row['part_name'] . "</td>";
-            echo "<td>" . $row['part_cost'] . "</td>";
-            echo "<td>" . $row['part_manufacturedate'] . "</td>";
-            echo "<td>" . $row['part_warrantyperiod'] . "</td>";
+            echo "<td>" . $row['invoice_number'] . "</td>";
+            echo "<td>" . $row['invoice_date'] . "</td>";
+            echo "<td>" . $row['invoice_date'] . "</td>";
+            echo "<td>" . $row['vehicle_no'] . "</td>";
+            echo "<td>" . $row['emp_id'] . "</td>";
             echo "</tr>";
         }
         if ($result == false) {

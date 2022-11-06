@@ -15,6 +15,12 @@
 </head>
 
 <body>
+    <center>
+        <div class="container" style="padding: 1%;">
+            <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
+            <button type="button" class="btn" style="background-color:red;"><a href="index.php" style="text-decoration:none;color:white;">Logout</a></button>
+        </div>
+    </center>
     <?php
     $emp_id = $emp_name = $emp_address = $emp_phone = $emp_salary = $emp_emailid = $emp_password = "";
     $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
@@ -33,35 +39,26 @@
         $emp_salary = $row['emp_salary'];
         $emp_emailid = $row['emp_emailid'];
         $emp_password = $row['emp_password'];
-        echo $emp_name;
-        echo " ";
-        echo  $emp_id;
-        echo " ";
-        echo $emp_emailid;
-        echo " ";
-        echo $emp_phone;
-        echo " ";
-        echo $emp_address;
-        echo " ";
-        echo $emp_salary;
-        echo " ";
-        echo $emp_password;
-        echo '<br>';
+        echo "<div class='container' style ='padding:1%;'>";
+        echo "<div class='row'>";
+        echo "<div class='col-md-12'>";
+        echo "<div class='card'>";
+        echo "<div class='card-body'>";
+        echo "<h5 class='card-title'>Employee ID: $emp_id</h5>";
+        echo "<h6 class='card-subtitle mb-2 text-muted'>Employee Name: $emp_name</h6>";
+        echo "<p class='card-text'>Employee Address: $emp_address</p>";
+        echo "<p class='card-text'>Employee Phone: $emp_phone</p>";
+        echo "<p class='card-text'>Employee Salary: $emp_salary</p>";
+        echo "<p class='card-text'>Employee Email ID: $emp_emailid</p>";
+        echo "<p class='card-text'>Employee Password: $emp_password</p>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
     }
     ?>
-    <center>
-        <div class="container" style="padding: 15%;">
-            <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
-            <button type="button" class="btn" style="background-color:red;"><a href="index.php" style="text-decoration:none;color:white;">Logout</a></button>
-            //generate invoice
-            // add customer than add vehicle
-            // create invoice
-            //view part
-            // view invoice
-            // view customer
-            // view vehicle
-        </div>
-    </center>
+
     <script src="algo.js">
     </script>
 </body>

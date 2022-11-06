@@ -19,30 +19,29 @@
         <div class="form" style="width:60% ;">
             <h1 style=" color:black; font-size: large;" id="heading">Customer Regestration</h1>
             <form name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
-                <div class="form_design" id="cust_id">
-                    <input type="text" name="cust_id" id="" required placeholder="Customer name"><b><br><span class="form_error"></span></b>
+                <!-- <div class="form_design" id="">
+                    <input type="text" name="cust_id" id="cust_id" required placeholder="Customer Id"><b><br><span class="form_error"></span></b>
+                </div> -->
+                <div class="form_design" id="">
+                    <input type="text" name="cust_name" id="cust_name" required placeholder="Customer name"><b><br><span class="form_error"></span></b>
                 </div>
-                <div class="form_design" id="cust_name">
-                    <input type="text" name="cust_name" id="" required placeholder="Customer name"><b><br><span class="form_error"></span></b>
+                <div class="form_design" id="">
+                    <input type="text" name="cust_address" id="cust_address" required placeholder="Customer address"><b><br><span class="form_error"></span></b>
                 </div>
-                <div class="form_design" id ="cust_address">
-                    <input type="text" name="cust_address" id="" required placeholder="Customer address"><b><br><span class="form_error"></span></b>
+                <div class="form_design" id="">
+                    <input type="text" name="cust_phone" id="cust_phone" required placeholder="Customer phone"><b><br><span class="form_error"></span></b>
                 </div>
-                <div class="form_design" id="cust_phone">
-                    <input type="text" name="cust_phone" id="" required placeholder="Customer phone"><b><br><span class="form_error"></span></b>
+                <div class="form_design" id="">
+                    <input type="text" name="cust_vehicle_no" id="cust_vehicle_no" required placeholder="Customer vehicle no"><b><br><span class="form_error"></span></b>
                 </div>
-                <div class="form_design" id="cust_vehicle_no">
-                    <input type="text" name="cust_vehicle_no" id="" required placeholder="Customer vehicle no"><b><br><span class="form_error"></span></b>
-                </div>         
                 <input type="submit" class="button" value="Submit" id="submitbutton">
     </center>
     </div>
     </div>
     </form>
     <?php
-
+    $cust_id = $cust_name = $cust_address = $cust_phone = $cust_vehicle_no = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $cust_id = test_input($_POST["cust_id"]);
         $cust_name = test_input($_POST["cust_name"]);
         $cust_address = test_input($_POST["cust_address"]);
         $cust_phone = test_input($_POST["cust_phone"]);
@@ -56,26 +55,22 @@
         $data = htmlspecialchars($data);
         return $data;
     }
-    ?>
-    <?php
-    $cust_id = $cust_name = $cust_address=$cust_phone = $cust_vehicle_no = "";
-    if ($cust_id != "" && $cust_name != "" && $cust_address != "" && $cust_phone != "" && $cust_vehicle_no != "") {
-        $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
+    if($cust_name != "" && $cust_address != "" && $cust_phone != "" && $cust_vehicle_no != "")
+      {  $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
         if ($conn == false) {
             die("Connection Failed: " . $conn->connect_error);
         }
+        $query = "select * from customer;";
+        $result = $conn->query($query);
+        $cust_id = $result->num_rows + 1;
         $query = "INSERT into customer VALUES('$cust_id','$cust_name','$cust_address','$cust_phone','$cust_vehicle_no');";
-        try {
-            if (mysqli_query($conn, $query) == true) {
-                throw new Exception('SuccesFully Regestered');
-            } else {
-                echo '<script>alert("Already Exists")</script>';
-            }
-        } catch (Exception $e) {
-            echo '<script>alert("SuccesFully Regestered")</script>';
-            header("Location:vehicle_regestration.php");
-        }
-    }
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            echo "<script>alert('Customer Regestration Successful');</script>";
+            header("Location: vehicle_regestration.php");
+        } else {
+            echo "<script>alert('Customer Regestration Failed');</script>";
+        }}
     ?>
     <script src="algo.js">
     </script>

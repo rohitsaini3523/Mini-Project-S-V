@@ -54,25 +54,33 @@
             $emp_password = $row["emp_password"];
             $emp_address = $row["emp_address"];
             $emp_salary = $row["emp_salary"];
-            echo '<script>alert("Login Success")</script>';
-            echo "Name:- $emp_name<br>";
-            echo "Employee ID:- $emp_id<br>";
-            echo "Email:- $emp_emailid<br>";
-            echo "PhoneNo:- $emp_phone";
+            // card
+            echo '<br>';
+            echo '<center><div class="card" style="width: 18rem;  style="padding:1%;"">';
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">Employee Profile</h5>';
+            echo '<h6 class="card-subtitle mb-2 text-muted">Employee ID: ' . $emp_id . '</h6>';
+            echo '<p class="card-text">Name: ' . $emp_name . '</p>';
+            echo '<p class="card-text">Email: ' . $emp_emailid . '</p>';
+            echo '<p class="card-text">Phone: ' . $emp_phone . '</p>';
+            echo '<p class="card-text">Address: ' . $emp_address . '</p>';
+            echo '<p class="card-text">Salary: ' . $emp_salary . '</p>';
+            echo '</div>';
+            echo '</div></center>';
         }
     }
     ?>
     <center>
         <div class="container" style="padding: 15%;">
             <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
-            <button type="button" class="btn" style="background-color:red;"><a href="index.php" style="text-decoration:none;color:white;">Logout</a></button>
-            //generate invoice 
-            // add customer than add vehicle
-            // create invoice
-            //view part
-            // view invoice
-            // view customer
-            // view vehicle
+            <button type="button" class="btn" style="background-color:red;"><a href="homepage.php" style="text-decoration:none;color:white;">Logout</a></button>
+            <button type="button" class="btn" style="background-color:red;"><a href="create_invoice.php" style="text-decoration:none;color:white;">Create Invoice</a></button>
+            <button type="button" class="btn" style="background-color:red;"><a href="customer_regestration.php" style="text-decoration:none;color:white;">Create Customer</a></button>
+            <button type="button" class="btn" style="background-color:red;"><a href="vehicle_regestration.php" style="text-decoration:none;color:white;">Add Vehicle</a></button>
+            <button type="button" class="btn" style="background-color:red;"><a href="view_invoice.php" style="text-decoration:none;color:white;">View Invoice</a></button>
+            <button type="button" class="btn" style="background-color:red;"><a href="view_customer.php" style="text-decoration:none;color:white;">View Customer</a></button>      
+            <button type="button" class="btn" style="background-color:red;"><a href="view_vehicle.php" style="text-decoration:none;color:white;">View Vehicle</a></button>      
+            <button type="button" class="btn" style="background-color:red;"><a href="view_parts.php" style="text-decoration:none;color:white;">View Parts</a></button>      
         </div>
     </center>
     <script src="algo.js">

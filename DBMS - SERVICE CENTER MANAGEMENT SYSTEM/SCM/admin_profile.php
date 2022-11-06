@@ -16,7 +16,6 @@
 
 <body>
     <?php
-    // define variables and set to empty values
     $email = $pass = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,7 +34,7 @@
     }
     ?>
     <?php
-    if ($email != "Admin@scm.in" && $pass != "Admin@123") {
+    if ($email != "Admin@scm.in" || $pass != "Admin@123") {
         echo '<script>alert("Not Found")</script>';
         header("Location: homepage.php");
     }
@@ -51,7 +50,7 @@
             <button type = "button" class="btn" style="background-color:yellow;"><a href="view_all_customer.php" style="text-decoration:none;color:red;">View All Customer</a></button>
             <button type = "button" class="btn" style="background-color:yellow;"><a href="view_parts.php" style="text-decoration:none;color:red;">View parts</a></button>
             <button type = "button" class="btn" style="background-color:yellow;"><a href="view_all_parts.php" style="text-decoration:none;color:red;">View All Parts</a></button>
-            <button type = "button" class="btn" style="background-color:yellow;"><a href="search_invoice.php" style="text-decoration:none;color:red;">Search Invoice</a></button>
+            <button type = "button" class="btn" style="background-color:yellow;"><a href="view_invoice.php" style="text-decoration:none;color:red;">Search Invoice</a></button>
             <button type = "button" class="btn" style="background-color:yellow;"><a href="view_vehicle.php" style="text-decoration:none;color:red;">View Vehicle</a></button>
         </div>
     </center>

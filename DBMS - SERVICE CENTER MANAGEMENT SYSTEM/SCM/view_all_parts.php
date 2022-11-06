@@ -15,49 +15,47 @@
 </head>
 
 <body>
-    <?php
-    // define variables and set to empty values
-    $part_no = $part_name = $part_cost = $part_manufacturedate = $part_warrantyperiod = "";   
-        $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
-        if ($conn == false) {
-            die("Connection Failed: " . $conn->connect_error);
-        }
-        // echo "Connected Successfully";
-        $query = "select * from parts;";
-        // echo $query;
-        $res = $conn->query($query);
-        while($row = $res->fetch_assoc()){
-            $part_no = $row['part_no'];
-            $part_name = $row['part_name'];
-            $part_cost = $row['part_cost'];
-            $part_manufacturedate = $row['part_manufacturedate'];
-            $part_warrantyperiod = $row['part_warrantyperiod'];
-
-        echo $part_no;
-        echo " ";
-        echo $part_name;
-        echo " ";
-        echo $part_cost;
-        echo " ";
-        echo $part_manufacturedate;
-        echo " ";
-        echo $part_warrantyperiod;
-        echo "<br>";
-        }
-    ?>
     <center>
-        <div class="container" style="padding: 15%;">
+        <div class="container" style="padding: 1%;">
             <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
             <button type="button" class="btn" style="background-color:red;"><a href="index.php" style="text-decoration:none;color:white;">Logout</a></button>
-            //generate invoice
-            // add customer than add vehicle
-            // create invoice
-            //view part
-            // view invoice
-            // view customer
-            // view vehicle
         </div>
     </center>
+    <?php
+    // define variables and set to empty values
+    $part_no = $part_name = $part_cost = $part_manufacturedate = $part_warrantyperiod = "";
+    $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
+    if ($conn == false) {
+        die("Connection Failed: " . $conn->connect_error);
+    }
+    // echo "Connected Successfully";
+    $query = "select * from parts;";
+    // echo $query;
+    $res = $conn->query($query);
+    while ($row = $res->fetch_assoc()) {
+        $part_no = $row['part_no'];
+        $part_name = $row['part_name'];
+        $part_cost = $row['part_cost'];
+        $part_manufacturedate = $row['part_manufacturedate'];
+        $part_warrantyperiod = $row['part_warrantyperiod'];
+        echo "<div class='container' style ='padding:1%;'>";
+        echo "<div class='row'>";
+        echo "<div class='col-md-12'>";
+        echo "<div class='card'>";
+        echo "<div class='card-body'>";
+        echo "<h5 class='card-title'>Part ID: $part_no</h5>";
+        echo "<h6 class='card-subtitle mb-2 text-muted'>Part Name: $part_name</h6>";
+        echo "<p class='card-text'>Part Cost: $part_cost</p>";
+        echo "<p class='card-text'>Part Manufactured: $part_manufacturedate</p>";
+        echo "<p class='card-text'>Part Warranty Period: $part_warrantyperiod</p>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+    }
+    ?>
+
     <script src="algo.js">
     </script>
 </body>

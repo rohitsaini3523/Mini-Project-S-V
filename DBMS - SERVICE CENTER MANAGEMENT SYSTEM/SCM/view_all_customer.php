@@ -14,16 +14,20 @@
 
 </head>
 
-<body>    
+<body>
+    <center>
+        <div class="container" style="padding: 1%;">
+            <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
+            <button type="button" class="btn" style="background-color:red;"><a href="homepage.php" style="text-decoration:none;color:white;">Logout</a></button>
+        </div>
+    </center>
     <?php
     $cust_id = $cust_name = $cust_address = $cust_phone = $cust_vehicle_no = "";
     $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
     if ($conn == false) {
         die("Connection Failed: " . $conn->connect_error);
     }
-    // echo "Connected Successfully";
     $query = "select * from customer;";
-    // echo $query;
     $res = $conn->query($query);
     while ($row = $res->fetch_assoc()) {
         $cust_id = $row['cust_id'];
@@ -31,31 +35,24 @@
         $cust_address = $row['cust_address'];
         $cust_phone = $row['cust_phone'];
         $cust_vehicle_no = $row['cust_vehicle_no'];
-        echo $cust_id;
-        echo " ";
-        echo $cust_name;
-        echo " ";
-        echo $cust_address;
-        echo " ";
-        echo $cust_phone;
-        echo " ";
-        echo $cust_vehicle_no;
-        echo "<br>";
+        echo "<div class='container' style ='padding:1%;'>";
+        echo "<div class='row'>";
+        echo "<div class='col-md-12'>";
+        echo "<div class='card'>";
+        echo "<div class='card-body'>";
+        echo "<h5 class='card-title'>Customer ID: $cust_id</h5>";
+        echo "<h6 class='card-subtitle mb-2 text-muted'>Customer Name: $cust_name</h6>";
+        echo "<p class='card-text'>Customer Address: $cust_address</p>";
+        echo "<p class='card-text'>Customer Phone: $cust_phone</p>";
+        echo "<p class='card-text'>Customer Vehicle No: $cust_vehicle_no</p>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
     }
     ?>
-    <center>
-        <div class="container" style="padding: 15%;">
-            <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
-            <button type="button" class="btn" style="background-color:red;"><a href="index.php" style="text-decoration:none;color:white;">Logout</a></button>
-            //generate invoice
-            // add customer than add vehicle
-            // create invoice
-            //view part
-            // view invoice
-            // view customer
-            // view vehicle
-        </div>
-    </center>
+
     <script src="algo.js">
     </script>
 </body>

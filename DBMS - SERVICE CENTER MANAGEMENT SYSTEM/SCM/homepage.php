@@ -17,16 +17,18 @@ session_start();
 </head>
 
 <body>
-    <center>
-        <h1 id="form" style="padding:10%">Vehicle Service Center</h1>
-        <form method="post">
-            <div class="form" style="width:60% ;">
-                <input type="submit" name="EMPLOYEE" class="button" value="EMPLOYEE" />
-                <input type="submit" name="ADMIN" class="button" value="ADMIN" />
-    </center>
+    <div class="container">
+        <div class="homepage">
+            <div class="head">
+                Vehicle Service Center
+            </div>
+            <div class="button-container">
+                <form method="post" style="display: flex;">
+                    <input class="btn-primary" type="submit" name="EMPLOYEE" value="Employee" />
+                    <input class="btn-primary" type="submit" name="ADMIN" value="Admin" >
+                </form>
+        </div>
     </div>
-    </div>
-    </form>
 
     <script src="algo.js">
     </script>

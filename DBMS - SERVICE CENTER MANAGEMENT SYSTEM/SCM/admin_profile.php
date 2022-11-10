@@ -1,9 +1,3 @@
-<?php 
-
-if(isset($_SESSION['username']))
-{
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +35,7 @@ if(isset($_SESSION['username']))
     if ($email != "Admin@scm.in" || $pass != "Admin@123") {
         echo '<script>alert("Not Found")</script>';
     }
-?>
+    ?>
     <center>
         <div class="container" style="padding: 15%;">
             <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
@@ -63,4 +57,4 @@ if(isset($_SESSION['username']))
     </script>
 </body>
 
-</html> 
+</html>

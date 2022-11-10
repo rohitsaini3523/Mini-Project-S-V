@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile </title><!-- Bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Employee Profile</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -72,16 +73,37 @@
     }
     ?>
     <center>
-        <div class="container" style="padding: 15%;">
-            <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
-            <button type="button" class="btn" style="background-color:red;"><a href="homepage.php" style="text-decoration:none;color:white;">Logout</a></button>
-            <button type="button" class="btn" style="background-color:red;"><a href="create_invoice.php" style="text-decoration:none;color:white;">Create Invoice</a></button>
-            <button type="button" class="btn" style="background-color:red;"><a href="customer_regestration.php" style="text-decoration:none;color:white;">Create Customer</a></button>
-            <button type="button" class="btn" style="background-color:red;"><a href="vehicle_regestration.php" style="text-decoration:none;color:white;">Add Vehicle</a></button>
-            <button type="button" class="btn" style="background-color:red;"><a href="view_invoice.php" style="text-decoration:none;color:white;">View Invoice</a></button>
-            <button type="button" class="btn" style="background-color:red;"><a href="view_customer.php" style="text-decoration:none;color:white;">View Customer</a></button>
-            <button type="button" class="btn" style="background-color:red;"><a href="view_vehicle.php" style="text-decoration:none;color:white;">View Vehicle</a></button>
-            <button type="button" class="btn" style="background-color:red;"><a href="view_parts.php" style="text-decoration:none;color:white;">View Parts</a></button>
+        <div class="profile-page">
+        <table>
+                <tr>
+                    <td>
+                        <a href="create_invoice.php"><button class="btn profile-btn">Create Invoice</button></a>
+                    </td>
+                    <td>
+                        <a href="customer_regestration.php"><button class="btn profile-btn">Create Customer</button></a>
+                    </td>
+                    <td>
+                        <a href="vehicle_regestration.php"><button class="btn profile-btn">Add Vehicle</button></a>
+                    </td>
+                    <td>
+                        <a href="view_invoice.php"><button class="btn profile-btn">View Invoice</button></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="view_customer.php"><button class="btn profile-btn">View Customer</button></a>
+                    </td>
+                    <td>
+                        <a href="view_vehicle.php"><button class="btn profile-btn">View Vehicle</button></a>
+                    </td>
+                    <td>
+                        <a href="view_parts.php"><button class="btn profile-btn">View Parts</button></a>            
+                    </td>
+                    <td>
+                        <a href="homepage.php"><button class="btn profile-btn btn-danger">Logout</button></a>
+                    </td>
+                </tr>
+            </table>
         </div>
     </center>
     <script src="algo.js">

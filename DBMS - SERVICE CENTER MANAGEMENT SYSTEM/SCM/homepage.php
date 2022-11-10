@@ -24,8 +24,8 @@ session_start();
             </div>
             <div class="button-container">
                 <form method="post" style="display: flex;">
-                    <input class="btn-primary" type="submit" name="EMPLOYEE" value="Employee" />
-                    <input class="btn-primary" type="submit" name="ADMIN" value="Admin" >
+                    <input class="btn" type="submit" name="EMPLOYEE" value="Employee" />
+                    <input class="btn" type="submit" name="ADMIN" value="Admin" >
                 </form>
         </div>
     </div>

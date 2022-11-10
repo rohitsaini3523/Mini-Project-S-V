@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login </title>
     <!-- Bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -15,17 +15,23 @@
 
 <body>
     <center>
-        <h1 id="form"></h1>
-        <div class="form" style="width:60% ;">
-            <h1 style=" color:black; font-size: large;" id="heading">Employee Login</h1>
-            <form name="myform" method="post" action="employee_profile.php">
-                <div class="form_design" id="email">
-                    <input type="email" name="femail" id="" required placeholder="Enter E-mail here"><b><br><span class="form_error"> </span></b>
+        <div class="container">
+        <div class="homepage">
+            <div class="head">
+                Employee Login
+            </div>
+            <form class="login-form" name="myform" method="post" action="employee_profile.php">
+                <div class="form-floating" id="email">
+                    <input class="form-control" type="email" name="femail" id="femail" placeholder="E-mail" required><b><br><span class="form_error"> </span></b>
+                    <label for="femail">E-mail</label>
                 </div>
-                <div class="form_design" id="pass">
-                    <input type="password" name="fpass" id="" required placeholder="Password"><b><br><span class="form_error"></span></b>
+                <div class="form-floating" id="pass">
+                    <input class="form-control" type="password" name="fpass" id="fpass" required placeholder="Password"><b><br><span class="form_error"></span></b>
+                    <label for="fpass">Password</label>
                 </div>
-                <input type="submit" class="button" value="Login" id="submitbutton">
+                <input type="submit" class="btn" value="  Login  " id="submitbutton">
+            </form>
+        </div>
     </center>
     </div>
     </div>

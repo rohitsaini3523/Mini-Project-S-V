@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile </title><!-- Bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Admin Profile</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -37,20 +38,53 @@
     }
     ?>
     <center>
-        <div class="container" style="padding: 15%;">
-            <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" id="username"></h1>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="employee_regestration.php" style="text-decoration:none;color:red;">Add Employee</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="update_employee.php" style="text-decoration:none;color:red;">Update Employee</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="delete_employee.php" style="text-decoration:none;color:red;">Delete Employee</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="view_employee.php" style="text-decoration:none;color:red;">Search Employee</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="view_all_employee.php" style="text-decoration:none;color:red;">View All Employee</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="view_all_customer.php" style="text-decoration:none;color:red;">View All Customer</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="view_parts.php" style="text-decoration:none;color:red;">View parts</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="view_all_parts.php" style="text-decoration:none;color:red;">View All Parts</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="view_invoice.php" style="text-decoration:none;color:red;">Search Invoice</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="view_vehicle.php" style="text-decoration:none;color:red;">View Vehicle</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="parts_regestration.php" style="text-decoration:none;color:red;">Parts Regestration</a></button>
-            <button type="button" class="btn" style="background-color:yellow;"><a href="logout.php" style="text-decoration:none;color:red;">Logout</a></button>
+        <div class="profile-page">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+            <table>
+                <tr>
+                    <td>
+                        <a href="employee_regestration.php"><button class="btn profile-btn">Add Employee</button></a>
+                    </td>
+                    <td>
+                        <a href="update_employee.php"><button class="btn profile-btn">Update Employee</button></a>
+                    </td>
+                    <td>
+                        <a href="delete_employee.php"><button class="btn profile-btn">Delete Employee</button></a>
+                    </td>
+                    <td>
+                        <a href="view_employee.php"><button class="btn profile-btn">Search Employee</button></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="view_all_employee.php"><button class="btn profile-btn">View All Employees</button></a>
+                    </td>
+                    <td>
+                        <a href="view_all_customer.php"><button class="btn profile-btn">View All Customers</button></a>
+                    </td>
+                    <td>
+                        <a href="view_parts.php"><button class="btn profile-btn">View part</button></a>
+                    </td>
+                    <td>
+                        <a href="view_all_parts.php"><button class="btn profile-btn">View All Parts</button></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="view_invoice.php"><button class="btn profile-btn">Search Invoice</button></a>
+                    </td>
+                    <td>
+                        <a href="view_vehicle.php"><button class="btn profile-btn">View Vehicle</button></a>
+                    </td>
+                    <td>
+                        <a href="parts_regestration.php"><button class="btn profile-btn">Parts Registration</button></a>
+                    </td>
+                    <td>
+                        <a href="logout.php"><button class="btn btn-danger profile-btn">Logout</button></a>
+                    </td>
+                </tr>
+            </table>
+
         </div>
     </center>
     <script src="algo.js">

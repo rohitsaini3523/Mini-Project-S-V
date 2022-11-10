@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,11 +18,11 @@
 
 <body>
     <center>
-        <h1 id="form" style = "padding:10%">Vehicle Service Center</h1>
+        <h1 id="form" style="padding:10%">Vehicle Service Center</h1>
         <form method="post">
             <div class="form" style="width:60% ;">
                 <input type="submit" name="EMPLOYEE" class="button" value="EMPLOYEE" />
-                <input type="submit" name="ADMIN" class="button" value="ADMIN"/>
+                <input type="submit" name="ADMIN" class="button" value="ADMIN" />
     </center>
     </div>
     </div>
@@ -34,7 +37,6 @@
     }
     if (isset($_POST['ADMIN'])) {
         header('location: admin_login.php');
-
     }
     ?>
 </body>

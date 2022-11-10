@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,13 +17,12 @@
 <body>
     <?php
     // define variables and set to empty values
-    $emp_id = $emp_name=$emp_address = $emp_phone=$emp_salary=$emp_emailid = $emp_password = "";
+    $emp_id = $emp_name = $emp_address = $emp_phone = $emp_salary = $emp_emailid = $emp_password = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emp_emailid = test_input($_POST["femail"]);
         $emp_password = test_input($_POST["fpass"]);
-    }
-    else{
+    } else {
         header("Location: homepage.php");
     }
 
@@ -45,7 +45,7 @@
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         if ($row == NULL) {
             echo '<script>alert("Not Found")</script>';
-            // header("Location: homepage.php");
+            header("Location: homepage.php");
         } else {
             $emp_id = $row['emp_id'];
             $emp_name = $row["emp_name"];
@@ -67,6 +67,7 @@
             echo '<p class="card-text">Salary: ' . $emp_salary . '</p>';
             echo '</div>';
             echo '</div></center>';
+            $_SESSION['username'] = "employee";
         }
     }
     ?>
@@ -78,9 +79,9 @@
             <button type="button" class="btn" style="background-color:red;"><a href="customer_regestration.php" style="text-decoration:none;color:white;">Create Customer</a></button>
             <button type="button" class="btn" style="background-color:red;"><a href="vehicle_regestration.php" style="text-decoration:none;color:white;">Add Vehicle</a></button>
             <button type="button" class="btn" style="background-color:red;"><a href="view_invoice.php" style="text-decoration:none;color:white;">View Invoice</a></button>
-            <button type="button" class="btn" style="background-color:red;"><a href="view_customer.php" style="text-decoration:none;color:white;">View Customer</a></button>      
-            <button type="button" class="btn" style="background-color:red;"><a href="view_vehicle.php" style="text-decoration:none;color:white;">View Vehicle</a></button>      
-            <button type="button" class="btn" style="background-color:red;"><a href="view_parts.php" style="text-decoration:none;color:white;">View Parts</a></button>      
+            <button type="button" class="btn" style="background-color:red;"><a href="view_customer.php" style="text-decoration:none;color:white;">View Customer</a></button>
+            <button type="button" class="btn" style="background-color:red;"><a href="view_vehicle.php" style="text-decoration:none;color:white;">View Vehicle</a></button>
+            <button type="button" class="btn" style="background-color:red;"><a href="view_parts.php" style="text-decoration:none;color:white;">View Parts</a></button>
         </div>
     </center>
     <script src="algo.js">
@@ -88,3 +89,10 @@
 </body>
 
 </html>
+<?php
+if ($_SESSION['username'] != "employee") {
+    header('location: homepage.php');
+    session_destroy();
+    session_unset();
+}
+?>

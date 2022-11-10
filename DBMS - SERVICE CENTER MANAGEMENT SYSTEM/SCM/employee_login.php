@@ -30,7 +30,7 @@
     </div>
     </div>
     </form>
-    
+
     <script src="algo.js">
     </script>
 

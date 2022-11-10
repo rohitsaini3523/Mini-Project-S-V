@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,21 +61,22 @@
         $data = htmlspecialchars($data);
         return $data;
     }
-    if($emp_name != "" && $emp_address != "" && $emp_phone != "" && $emp_salary != "" && $emp_emailid != "" && $emp_password != ""){
-    $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
-    if ($conn == false) {
-        die("Connection Failed: " . $conn->connect_error);
+    if ($emp_name != "" && $emp_address != "" && $emp_phone != "" && $emp_salary != "" && $emp_emailid != "" && $emp_password != "") {
+        $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
+        if ($conn == false) {
+            die("Connection Failed: " . $conn->connect_error);
+        }
+        $query = "select * from customer;";
+        $result = $conn->query($query);
+        $emp_id = $result->num_rows + 1;
+        $query = "INSERT into employee VALUES('$emp_id','$emp_name','$emp_address','$emp_phone','$emp_salary','$emp_emailid','$emp_password');";
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            echo "<script>alert('Employee Regestration Successful');</script>";
+        } else {
+            echo "<script>alert('Employee Regestration Failed');</script>";
+        }
     }
-    $query = "select * from customer;";
-    $result = $conn->query($query);
-    $emp_id = $result->num_rows + 1;
-    $query = "INSERT into employee VALUES('$emp_id','$emp_name','$emp_address','$emp_phone','$emp_salary','$emp_emailid','$emp_password');";
-    $result = mysqli_query($conn, $query);
-    if ($result) {
-        echo "<script>alert('Employee Regestration Successful');</script>";
-    } else {
-        echo "<script>alert('Employee Regestration Failed');</script>";
-    }}
     ?>
     <script src="algo.js">
     </script>

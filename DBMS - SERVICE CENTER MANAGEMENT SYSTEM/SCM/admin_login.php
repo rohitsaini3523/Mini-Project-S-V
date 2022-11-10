@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,6 @@
 
     <script src="algo.js">
     </script>
-
 </body>
 
 </html>

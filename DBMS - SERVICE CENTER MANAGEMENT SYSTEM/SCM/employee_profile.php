@@ -74,6 +74,7 @@
     ?>
     <center>
         <div class="profile-page">
+        <img class="logo-img" src="images/screwdriver-wrench.png" alt="screwdriver-wrench-img">
         <table>
                 <tr>
                     <td>

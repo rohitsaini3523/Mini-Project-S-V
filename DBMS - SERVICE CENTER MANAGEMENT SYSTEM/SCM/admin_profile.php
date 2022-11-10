@@ -39,7 +39,7 @@
     ?>
     <center>
         <div class="profile-page">
-        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <img class="logo-img" src="images/admin-profile.png" alt="admin-img">
             <table>
                 <tr>
                     <td>

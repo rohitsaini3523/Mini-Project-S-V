@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login </title>
+    <title>Admin Login</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- js -->
@@ -18,8 +18,9 @@
     <center>
         <div class="container">
         <div class="homepage">
+            <img class="logo-img" src="images/admin-profile.png" alt="admin-logo">
             <div class="head">
-                Employee Login
+                Admin Login
             </div>
             <form class="login-form" name="myform" method="post" action="admin_profile.php">
                 <div class="form-floating" id="email">

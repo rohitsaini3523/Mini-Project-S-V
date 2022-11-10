@@ -7,15 +7,21 @@ body
  border-radius: 15px;
  text-align: center;
  background-color: black;
- margin: 12% 30%;
+ margin: 10% 30%;
  padding: 20px;
 }
 
 .profile-page {
   border-radius: 15px;
   background-color: #000;
-  margin: 12% 20%;
+  margin: 10% 20%;
   padding: 50px 0;
+}
+
+.logo-img {
+  height: 125px;
+  width: 125px;
+  margin-bottom: 20px;
 }
 
 .head
@@ -62,7 +68,7 @@ body
 
 .form-floating input[type="password"]{
   background-color: #E4F9F5;
-  margin-top: -1px;
+  margin-top: -2px;
   margin-bottom: 20px;
   border-radius: 0 0 5px 5px;
 }

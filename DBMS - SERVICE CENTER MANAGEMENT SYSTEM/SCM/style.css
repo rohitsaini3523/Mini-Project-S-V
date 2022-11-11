@@ -60,18 +60,6 @@ body
 .form-floating{
   height: 60px;
 }
-.form-floating input[type="email"]{
-  background-color: #E4F9F5;
-  margin-top: 20px;
-  border-radius: 5px 5px 0 0;
-}
-
-.form-floating input[type="password"]{
-  background-color: #E4F9F5;
-  margin-top: -2px;
-  margin-bottom: 20px;
-  border-radius: 0 0 5px 5px;
-}
 
 .profile-btn {
   width: 80%;
@@ -80,4 +68,18 @@ body
 .btn-danger {
   background-color: red;
   color: white;
+}
+
+.no-border {
+  margin: -2px 0;
+  border-radius: 0;
+}
+
+.first-field {
+  border-radius: 5px 5px 0 0;
+}
+
+.last-field {
+  margin: -2px 0;
+  border-radius: 0 0 5px 5px;
 }

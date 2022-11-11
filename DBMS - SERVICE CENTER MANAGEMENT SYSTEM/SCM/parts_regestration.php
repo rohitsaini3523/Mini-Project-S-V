@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile </title><!-- Bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Register Parts</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -17,25 +18,33 @@
 <body>
 
     <center>
-        <h1 id="form"></h1>
-        <div class="form" style="width:60% ;">
-            <h1 style=" color:black; font-size: large;" id="heading">Parts Regestration</h1>
-            <form name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
+        <div class="container">
+            <div class="homepage">
+                <h1 class="head">Register Parts</h1>
+                <form class="login-form" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
 
-                <div class="form_design" id="">
-                    <input type="text" name="part_name" id="part_name" required placeholder="Part name"><b><br><span class="form_error"></span></b>
-                </div>
-                <div class="form_design" id="">
-                    <input type="text" name="part_cost" id="part_cost" required placeholder="Part Cost"><b><br><span class="form_error"></span></b>
-                </div>
-                <div class="form_design" id="">
-                    <input type="text" name="part_manufacturedate" id="part_manufacturedate" required placeholder="Part Manufacture Date"><b><br><span class="form_error"></span></b>
-                </div>
-                <div class="form_design" id="">
-                    <input type="text" name="part_warrantyperiod" id="part_warrantyperiod" required placeholder="Part Warranty Period"><b><br><span class="form_error"></span></b>
-                </div>
-                <input type="submit" class="button" value="Submit" id="submitbutton">
+                    <div class="form-floating">
+                        <input class="form-control first-field" type="text" name="part_name" id="part_name" required placeholder="Part Name"><b><br><span class="form_error"></span></b>
+                        <label for="part_name">Part Name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control no-border" type="text" name="part_cost" id="part_cost" required placeholder="Part Cost"><b><br><span class="form_error"></span></b>
+                        <label for="part_cost">Part Cost</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control no-border" type="text" name="part_manufacturedate" id="part_manufacturedate" required placeholder="Manufacture Date"><b><br><span class="form_error"></span></b>
+                        <label for="part_manufacturedate">Manufacture Date</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control last-field" type="text" name="part_warrantyperiod" id="part_warrantyperiod" required placeholder="Warranty Period"><b><br><span class="form_error"></span></b>
+                        <label for="part_warrantyperiod">Warranty Period</label>
+                    </div>
+                    <input type="submit" class="btn" value="Register" id="submitbutton">
+                </form>
+            </div>
+        </div>
     </center>
+    
     <?php
     // define variables and set to empty values
     $part_no = $part_name = $part_cost = $part_manufacturedate = $part_warrantyperiod = "";

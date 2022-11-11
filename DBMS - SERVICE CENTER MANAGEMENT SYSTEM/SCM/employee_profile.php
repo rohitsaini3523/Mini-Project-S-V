@@ -81,7 +81,7 @@
                         <a href="create_invoice.php"><button class="btn profile-btn">Create Invoice</button></a>
                     </td>
                     <td>
-                        <a href="customer_regestration.php"><button class="btn profile-btn">Create Customer</button></a>
+                        <a href="customer_regestration.php"><button class="btn profile-btn">Add Customer</button></a>
                     </td>
                     <td>
                         <a href="vehicle_regestration.php"><button class="btn profile-btn">Add Vehicle</button></a>
@@ -92,13 +92,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="view_customer.php"><button class="btn profile-btn">View Customer</button></a>
+                        <a href="view_customer.php"><button class="btn profile-btn">Search Customer</button></a>
                     </td>
                     <td>
-                        <a href="view_vehicle.php"><button class="btn profile-btn">View Vehicle</button></a>
+                        <a href="view_vehicle.php"><button class="btn profile-btn">Search Vehicle</button></a>
                     </td>
                     <td>
-                        <a href="view_parts.php"><button class="btn profile-btn">View Parts</button></a>            
+                        <a href="view_parts.php"><button class="btn profile-btn">Search Parts</button></a>            
                     </td>
                     <td>
                         <a href="homepage.php"><button class="btn profile-btn btn-danger">Logout</button></a>

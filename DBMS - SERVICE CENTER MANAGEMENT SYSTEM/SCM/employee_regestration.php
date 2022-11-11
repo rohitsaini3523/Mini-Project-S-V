@@ -6,43 +6,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Service Center</title><!-- Bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Register Employee</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="padding:1%">
+<body>
     <center>
-        <h1 id="form"></h1>
-        <div class="form" style="width:60% ;">
-            <h1 style=" color:black; font-size: large;" id="heading">Customer Regestration</h1>
-            <form name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
-                <div class="form_design" id="">
-                    <input type="text" name="emp_name" id="emp_name" required placeholder="Employee name"><b><br><span class="form_error"></span></b>
-                </div>
-                <div class="form_design" id="">
-                    <input type="text" name="emp_address" id="emp_address" required placeholder="Employee address"><b><br><span class="form_error"></span></b>
-                </div>
-                <div class="form_design" id="">
-                    <input type="number" name="emp_phone" id="emp_phone" required placeholder="Employee phone"><b><br><span class="form_error"></span></b>
-                </div>
-                <div class="form_design" id="">
-                    <input type="text" name="emp_salary" id="emp_salary" required placeholder="Employee Salary"><b><br><span class="form_error"></span></b>
-                </div>
-                <div class="form_design" id="">
-                    <input type="email" name="emp_email" id="emp_email" required placeholder="Employee Email ID"><b><br><span class="form_error"></span></b>
-                </div>
-                <div class="form_design" id="">
-                    <input type="password" name="emp_password" id="emp_password" required placeholder="Employee Password"><b><br><span class="form_error"></span></b>
-                </div>
-                <input type="submit" class="button" value="Submit" id="submitbutton">
+        <div class="container">
+            <div class="homepage">
+                <h1 class="head">Employee Registration</h1>
+                <form class="login-form" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
+                    <div class="form-floating">
+                        <input class="form-control first-field" type="text" name="emp_name" id="emp_name" required placeholder="Employee name"><b><br><span class="form_error"></span></b>
+                        <label for="emp_name">Employee name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control no-border" type="text" name="emp_address" id="emp_address" required placeholder="Employee address"><b><br><span class="form_error"></span></b>
+                        <label for="emp_address">Employee address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control no-border" type="text" name="emp_phone" id="emp_phone" required placeholder="Employee phone"><b><br><span class="form_error"></span></b>
+                        <label for="emp_">Employee phone</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control no-border" type="text" name="emp_salary" id="emp_salary" required placeholder="Employee salary"><b><br><span class="form_error"></span></b>
+                        <label for="emp_">Employee salary</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control no-border" type="email" name="emp_email" id="emp_email" required placeholder="Employee Email ID"><b><br><span class="form_error"></span></b>
+                        <label for="emp_email">Employee Email ID</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control last-field" type="password" name="emp_password" id="emp_password" required placeholder="Employee password"><b><br><span class="form_error"></span></b>
+                        <label for="emp_password">Employee password</label>
+                    </div>
+                    <input type="submit" class="btn" value="Register" id="submitbutton">
+                </form>
+            </div>
+        </div>
     </center>
-    </div>
-    </div>
-    </form>
+
     <?php
     $emp_id = $emp_name = $emp_address = $emp_phone = $emp_salary = $emp_emailid = $emp_password = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

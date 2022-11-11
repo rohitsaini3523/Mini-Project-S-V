@@ -24,11 +24,11 @@
             </div>
             <form class="login-form" name="myform" method="post" action="admin_profile.php">
                 <div class="form-floating" id="email">
-                    <input class="form-control" type="email" name="femail" id="femail" placeholder="E-mail" required><b><br><span class="form_error"> </span></b>
+                    <input class="form-control first-field" type="email" name="femail" id="femail" placeholder="E-mail" required><b><br><span class="form_error"> </span></b>
                     <label for="femail">E-mail</label>
                 </div>
                 <div class="form-floating" id="pass">
-                    <input class="form-control" type="password" name="fpass" id="fpass" required placeholder="Password"><b><br><span class="form_error"></span></b>
+                    <input class="form-control last-field" type="password" name="fpass" id="fpass" required placeholder="Password"><b><br><span class="form_error"></span></b>
                     <label for="fpass">Password</label>
                 </div>
                 <input type="submit" class="btn" value="  Login  " id="submitbutton">

@@ -49,7 +49,7 @@
                         <a href="update_employee.php"><button class="btn profile-btn">Update Employee</button></a>
                     </td>
                     <td>
-                        <a href="delete_employee.php"><button class="btn profile-btn">Delete Employee</button></a>
+                        <a href="delete_employee.php"><button class="btn profile-btn">Remove Employee</button></a>
                     </td>
                     <td>
                         <a href="view_employee.php"><button class="btn profile-btn">Search Employee</button></a>
@@ -63,7 +63,7 @@
                         <a href="view_all_customer.php"><button class="btn profile-btn">View All Customers</button></a>
                     </td>
                     <td>
-                        <a href="view_parts.php"><button class="btn profile-btn">View part</button></a>
+                        <a href="view_parts.php"><button class="btn profile-btn">Search parts</button></a>
                     </td>
                     <td>
                         <a href="view_all_parts.php"><button class="btn profile-btn">View All Parts</button></a>
@@ -74,10 +74,10 @@
                         <a href="view_invoice.php"><button class="btn profile-btn">Search Invoice</button></a>
                     </td>
                     <td>
-                        <a href="view_vehicle.php"><button class="btn profile-btn">View Vehicle</button></a>
+                        <a href="view_vehicle.php"><button class="btn profile-btn">Search Vehicle</button></a>
                     </td>
                     <td>
-                        <a href="parts_regestration.php"><button class="btn profile-btn">Parts Registration</button></a>
+                        <a href="parts_regestration.php"><button class="btn profile-btn">Register Parts</button></a>
                     </td>
                     <td>
                         <a href="logout.php"><button class="btn btn-danger profile-btn">Logout</button></a>

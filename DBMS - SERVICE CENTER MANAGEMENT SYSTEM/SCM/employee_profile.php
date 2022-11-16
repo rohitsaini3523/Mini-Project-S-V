@@ -1,15 +1,5 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['emp_emailid'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: employee_login.php');
-}
-if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['emp_emailid']);
-    header("location: employee_login.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,15 +19,6 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body>
-    <script type="text/javascript">
-        function preventBack() {
-            window.history.forward();
-        }
-        setTimeout("preventBack()", 0);
-        window.onload = function() {
-            null
-        };
-    </script>
     <?php
     // define variables and set to empty values
     $emp_id = $emp_name = $emp_address = $emp_phone = $emp_salary = $emp_emailid = $emp_password = "";
@@ -66,6 +47,7 @@ if (isset($_GET['logout'])) {
         // echo $query;
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $user = mysqli_fetch_assoc($result);
         if ($row == NULL) {
             echo '<script>alert("Not Found")</script>';
             header("Location: homepage.php");
@@ -77,6 +59,8 @@ if (isset($_GET['logout'])) {
             $emp_password = $row["emp_password"];
             $emp_address = $row["emp_address"];
             $emp_salary = $row["emp_salary"];
+            $_SESSION['emp_emailid'] = $emp_emailid;
+            $_SESSION['success']  = "You're now logged in";
             // card
             echo '<br>';
             echo '<center><div class="card" style="width: 18rem;  style="padding:1%;"">';
@@ -135,9 +119,14 @@ if (isset($_GET['logout'])) {
 
 </html>
 <?php
-if ($_SESSION['username'] != "employee") {
-    header('location: homepage.php');
-    session_destroy();
-    session_unset();
+if (!isset($_SESSION['emp_emailid'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: employee_login.php');
 }
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['emp_emailid']);
+    header("location: employee_login.php");
+}
+?>
 ?>

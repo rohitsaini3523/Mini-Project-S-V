@@ -1,15 +1,6 @@
 <?php 
     //session set
     session_start();
-    if(!isset($_SESSION['admin_emailid'])){
-        $_SESSION['msg'] = "You must log in first";
-        header('location: admin_login.php');
-    }
-    if(isset($_GET['logout'])){
-        session_destroy();
-        unset($_SESSION['admin_emailid']);
-        header("location: admin_login.php");
-    }
 ?>
 
 <!DOCTYPE html>

@@ -59,19 +59,66 @@
         $emp_password = $row["emp_password"];
         $emp_address = $row["emp_address"];
         $emp_salary = $row["emp_salary"];
-        // card
-        echo '<br>';
-        echo '<center><div class="card" style="width: 18rem;  style="padding:1%;"">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title">Employee Profile</h5>';
-        echo '<h6 class="card-subtitle mb-2 text-muted">Employee ID: ' . $emp_id . '</h6>';
-        echo '<p class="card-text">Name: ' . $emp_name . '</p>';
-        echo '<p class="card-text">Email: ' . $emp_emailid . '</p>';
-        echo '<p class="card-text">Phone: ' . $emp_phone . '</p>';
-        echo '<p class="card-text">Address: ' . $emp_address . '</p>';
-        echo '<p class="card-text">Salary: ' . $emp_salary . '</p>';
-        echo '</div>';
-        echo '</div></center>';
+        echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-center'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>
+                      <tr>
+                        <th scope='col'>Employee ID</th>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Email</th>
+                        <th scope='col'>Phone</th>
+                        <th scope='col'>Password</th>
+                        <th scope='col'>Salary No</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
+        echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-left'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>
+            echo '<tr>';
+            echo '<td> $row[emp_id]</td>';
+            echo '<td> $row[emp_name]</td>';
+            echo '<td>$row[emp_emailid]</td>';
+            echo '<td>$row[emp_phone]</td>';
+            echo '<td>$row[emp_password]</td>';
+            echo '<td>$row[emp_salary]</td>';
+            echo '</tr>';
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
         if ($result1 == false) {
             echo "<script>alert('Not Found');</script>";
         }

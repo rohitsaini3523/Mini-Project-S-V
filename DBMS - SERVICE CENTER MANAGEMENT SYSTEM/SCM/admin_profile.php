@@ -1,3 +1,17 @@
+<?php 
+    //session set
+    session_start();
+    if(!isset($_SESSION['admin_emailid'])){
+        $_SESSION['msg'] = "You must log in first";
+        header('location: admin_login.php');
+    }
+    if(isset($_GET['logout'])){
+        session_destroy();
+        unset($_SESSION['admin_emailid']);
+        header("location: admin_login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,13 +32,26 @@
 <body>
     <?php
     $email = $pass = "";
+    if (isset($_POST['femail'])) {
+        $email = $_POST['femail'];
+        $pass = $_POST['fpass'];
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = test_input($_POST["femail"]);
-        $pass = test_input($_POST["fpass"]);
-    } else {
-        header("Location: homepage.php");
+        if ($email == "Admin@scm.in" && $pass == "Admin@123") {
+            header('location: admin_profile.php');
+        } else {
+            header('location: admin_login.php');
+        }
     }
+    else
+    {
+        echo "<script>Invalid Credentials</script>";
+    }
+    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //     $email = test_input($_POST["femail"]);
+    //     $pass = test_input($_POST["fpass"]);
+    // } else {
+    //     header("Location: homepage.php");
+    // }
 
     function test_input($data)
     {
@@ -32,9 +59,6 @@
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
-    }
-    if ($email != "Admin@scm.in" || $pass != "Admin@123") {
-        echo '<script>alert("Not Found")</script>';
     }
     ?>
     <center>

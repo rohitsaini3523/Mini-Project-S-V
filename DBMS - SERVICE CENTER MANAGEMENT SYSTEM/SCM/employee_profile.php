@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['emp_emailid'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: employee_login.php');
+}
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['emp_emailid']);
+    header("location: employee_login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +29,15 @@
 </head>
 
 <body>
+    <script type="text/javascript">
+        function preventBack() {
+            window.history.forward();
+        }
+        setTimeout("preventBack()", 0);
+        window.onload = function() {
+            null
+        };
+    </script>
     <?php
     // define variables and set to empty values
     $emp_id = $emp_name = $emp_address = $emp_phone = $emp_salary = $emp_emailid = $emp_password = "";
@@ -74,8 +96,8 @@
     ?>
     <center>
         <div class="profile-page">
-        <img class="logo-img" src="images/screwdriver-wrench.png" alt="screwdriver-wrench-img">
-        <table>
+            <img class="logo-img" src="images/screwdriver-wrench.png" alt="screwdriver-wrench-img">
+            <table>
                 <tr>
                     <td>
                         <a href="create_invoice.php"><button class="btn profile-btn">Create Invoice</button></a>
@@ -98,7 +120,7 @@
                         <a href="view_vehicle.php"><button class="btn profile-btn">Search Vehicle</button></a>
                     </td>
                     <td>
-                        <a href="view_parts.php"><button class="btn profile-btn">Search Parts</button></a>            
+                        <a href="view_parts.php"><button class="btn profile-btn">Search Parts</button></a>
                     </td>
                     <td>
                         <a href="homepage.php"><button class="btn profile-btn btn-danger">Logout</button></a>

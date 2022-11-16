@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 03:50 PM
+-- Generation Time: Nov 15, 2022 at 08:25 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -123,6 +123,31 @@ CREATE TABLE `employee` (
 INSERT INTO `employee` (`emp_id`, `emp_name`, `emp_address`, `emp_phone`, `emp_salary`, `emp_emailid`, `emp_password`) VALUES
 (1, 'Rohit', 'vadodara', '9568000766', 150000, 'rohitsaini3523@gmail.com', 'jinga');
 
+--
+-- Triggers `employee`
+--
+DELIMITER $$
+CREATE TRIGGER `createemployee` AFTER INSERT ON `employee` FOR EACH ROW INSERT into emp_log VALUES(NULL,NEW.emp_id,'Inserted',NOW())
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `updateemployee` AFTER UPDATE ON `employee` FOR EACH ROW INSERT into emp_log VALUES(NULL,NEW.emp_id,'Updated',NOW())
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_log`
+--
+
+CREATE TABLE `emp_log` (
+  `log_id` int(11) NOT NULL,
+  `cust_id` int(11) NOT NULL,
+  `action` varchar(20) NOT NULL,
+  `edate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -167,13 +192,23 @@ CREATE TABLE `parts` (
 INSERT INTO `parts` (`part_no`, `part_name`, `part_cost`, `part_manufacturedate`, `part_warrantyperiod`) VALUES
 (1, 'Buzzer', 150, '2022-09-13', '2023-09-13'),
 (2, 'starter', 230, '2021-11-02', '2022-11-02'),
-(3, 'Tyre', 1200, '2022-11-09', '2025-11-09');
+(3, 'Tyre', 1200, '2022-11-09', '2025-11-09'),
+(4, 'qwr', 2, '2022-11-09', '2025-11-09'),
+(5, 'Tyre', 1299, '2022-11-09', '2025-11-09');
 
 --
 -- Triggers `parts`
 --
 DELIMITER $$
+CREATE TRIGGER `createpart` AFTER INSERT ON `parts` FOR EACH ROW INSERT into part_log VALUES(NULL,NEW.part_no,'created',NOW())
+$$
+DELIMITER ;
+DELIMITER $$
 CREATE TRIGGER `parts_reorder` AFTER INSERT ON `parts` FOR EACH ROW INSERT INTO parts_quantity VALUES(NEW.part_no,'10')
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `updatepart` AFTER UPDATE ON `parts` FOR EACH ROW INSERT into part_log VALUES(NULL,NEW.part_no,'Updated',NOW())
 $$
 DELIMITER ;
 
@@ -188,23 +223,65 @@ CREATE TABLE `parts_quantity` (
   `parts_quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `parts_quantity`
+--
+
+INSERT INTO `parts_quantity` (`part_id`, `parts_quantity`) VALUES
+(4, 10),
+(5, 10);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `today_pending-service`
+-- Table structure for table `part_log`
 --
 
-CREATE TABLE `today_pending-service` (
+CREATE TABLE `part_log` (
+  `log_id` int(11) NOT NULL,
+  `part_no` int(11) NOT NULL,
+  `action` varchar(20) NOT NULL,
+  `pdate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `part_log`
+--
+
+INSERT INTO `part_log` (`log_id`, `part_no`, `action`, `pdate`) VALUES
+(1, 4, 'created', '2022-11-15 00:43:52'),
+(2, 5, 'created', '2022-11-15 00:44:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `today_pending_service`
+--
+
+CREATE TABLE `today_pending_service` (
   `pend_no` int(11) NOT NULL,
   `vehicle_no` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `today_pending-service`
+-- Dumping data for table `today_pending_service`
 --
 
-INSERT INTO `today_pending-service` (`pend_no`, `vehicle_no`) VALUES
+INSERT INTO `today_pending_service` (`pend_no`, `vehicle_no`) VALUES
 (1, 'GJ06LA6989');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -250,6 +327,12 @@ ALTER TABLE `employee`
   ADD PRIMARY KEY (`emp_id`);
 
 --
+-- Indexes for table `emp_log`
+--
+ALTER TABLE `emp_log`
+  ADD PRIMARY KEY (`log_id`);
+
+--
 -- Indexes for table `invoice`
 --
 ALTER TABLE `invoice`
@@ -262,6 +345,18 @@ ALTER TABLE `invoice`
 --
 ALTER TABLE `parts`
   ADD PRIMARY KEY (`part_no`);
+
+--
+-- Indexes for table `part_log`
+--
+ALTER TABLE `part_log`
+  ADD PRIMARY KEY (`log_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `vehicle`
@@ -291,6 +386,24 @@ ALTER TABLE `cust_log`
 --
 ALTER TABLE `employee`
   MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `emp_log`
+--
+ALTER TABLE `emp_log`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `part_log`
+--
+ALTER TABLE `part_log`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

@@ -51,40 +51,128 @@
         $query = "select * from vehicle where vehicle_number = '$vehicle_number';";
         $result = $conn->query($query);
         $result = mysqli_query($conn, $query);
-        echo "<center>";
-        echo "<table border='1' style='width:60% ;'>";
+        echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-left'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>";
         echo "<tr>";
         echo "<th>Vehicle No</th>";
         echo "<th>Vehicle Type</th>";
         echo "<th>Vehicle RC Book</th>";
         echo "<th>Customer ID</th>";
         echo "</tr>";
+                  echo "  </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
+       
         while ($row = mysqli_fetch_array($result)) {
+            echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-left'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>";
             echo "<tr>";
-            echo "<td>" . $row['vehicle_number'] . "</td>";
-            echo "<td>" . $row['vehicle_type'] . "</td>";
-            echo "<td>" . $row['RCbook'] . "</td>";
-            echo "<td>" . $row['customer_id'] . "</td>";
+            echo "<td>$row[vehicle_number]</td>";
+            echo "<td>$row[vehicle_type]</td>";
+            echo "<td> $row[RCbook]</td>";
+            echo "<td>$row[customer_id]</td>";
             echo "</tr>";
+                  echo "  </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
+            
         }
         $query1 = "select * from customer where cust_vehicle_no = '$vehicle_number';";
         $result1 = $conn->query($query1);
         $result1 = mysqli_query($conn, $query1);
-        echo "<br><hr><center>";
-        echo "<table border='1' style='width:60% ;'>";
-        echo "<tr>";
-        echo "<th>Customer Id</th>";
-        echo "<th>Customer Name</th>";
-        echo "<th>Address</th>";
-        echo "<th>Phone</th>";
-        echo "</tr>";
+        echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-center'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>
+                      <tr>
+                        <th scope='col'>Customer ID</th>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Address</th>
+                        <th scope='col'>Phone</th>
+                        <th scope='col'>Vehicle No</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
         while ($row = mysqli_fetch_array($result1)) {
-            echo "<tr>";
-            echo "<td>" . $row['cust_id'] . "</td>";
-            echo "<td>" . $row['cust_name'] . "</td>";
-            echo "<td>" . $row['cust_address'] . "</td>";
-            echo "<td>" . $row['cust_phone'] . "</td>";
-            echo "</tr>";
+            echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-left'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>
+            echo '<tr>';
+            echo '<td> $row[cust_id]</td>';
+            echo '<td> $row[cust_name]</td>';
+            echo '<td>$row[cust_address]</td>';
+            echo '<td>$row[cust_phone]</td>';
+            echo '<td>$row[cust_vehicle_no]</td>';
+            echo '</tr>';
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
         }
         if ($result == false) {
             echo "<script>alert('Not Found');</script>";

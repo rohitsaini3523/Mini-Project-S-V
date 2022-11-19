@@ -78,28 +78,7 @@
                         <th scope='col'>Password</th>
                         <th scope='col'>Salary No</th>
                       </tr>
-                    </thead>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>";
-        echo "<section class='intro'>
-  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
-    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
-      <div class='container'>
-        <div class='row justify-content-left'>
-          <div class='col-12'>
-            <div class='card bg-dark shadow-2-strong'>
-              <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table table-dark table-borderless mb-0'>
-                    <thead>
+                    
             echo '<tr>';
             echo '<td> $row[emp_id]</td>';
             echo '<td> $row[emp_name]</td>';

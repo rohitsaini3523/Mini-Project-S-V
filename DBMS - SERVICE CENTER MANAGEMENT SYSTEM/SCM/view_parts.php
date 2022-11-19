@@ -51,15 +51,24 @@
         $query = "select * from parts where part_no = $part_id;";
         $result = $conn->query($query);
         $result = mysqli_query($conn, $query);
-        echo "<center>";
-        echo "<table border='1' style='width:60% ;'>";
-        echo "<tr>";
-        echo "<th>Part No</th>";
-        echo "<th>Part Name</th>";
-        echo "<th>Part Cost</th>";
-        echo "<th>Part Manufacture Date</th>";
-        echo "<th>Part Warranty Period</th>";
-        echo "</tr>";
+        echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-center'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>
+                      <tr>
+                        <th scope='col'>Part ID</th>
+                        <th scope='col'>Part Name</th>
+                        <th scope='col'>Part Cost</th>
+                        <th scope='col'>Manufacture Date</th>
+                        <th scope='col'>Warranty Period</th>
+                      </tr>";
         while ($row = mysqli_fetch_array($result)) {
             echo "<tr>";
             echo "<td>" . $row['part_no'] . "</td>";
@@ -69,6 +78,18 @@
             echo "<td>" . $row['part_warrantyperiod'] . "</td>";
             echo "</tr>";
         }
+        echo
+        "</thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
         if ($result == false) {
             echo "<script>alert('Not Found');</script>";
         }

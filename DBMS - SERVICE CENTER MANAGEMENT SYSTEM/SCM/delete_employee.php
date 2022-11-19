@@ -48,13 +48,14 @@
         if ($conn == false) {
             die("Connection Failed: " . $conn->connect_error);
         }
-        $query = "DELETE from employee Where emp_emailid = '$emp_emailid';";
         $query1 = "select * from employee Where emp_emailid = '$emp_emailid';";
-        $result = mysqli_query($conn, $query);
         $result1 = mysqli_query($conn, $query1);
-        $row = mysqli_fetch_array($result1, MYSQLI_ASSOC);
-        if ($row == NULL) {
-            echo "<script>alert('Employee Deletion Failed');</script>";
+        $query = "DELETE from employee Where emp_emailid = '$emp_emailid';";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result1) == 1) {
+            echo "<script>alert('Employee with email id $emp_emailid is removed from the database.')</script>";
+        } else {
+            echo "<script>alert('Employee with email id $emp_emailid does not exist in the database.')</script>";
         }
     }
     ?>

@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,15 +116,3 @@ session_start();
 </body>
 
 </html>
-<?php
-if (!isset($_SESSION['emp_emailid'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: employee_login.php');
-}
-if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['emp_emailid']);
-    header("location: employee_login.php");
-}
-?>
-?>

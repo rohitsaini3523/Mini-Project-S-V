@@ -32,12 +32,12 @@
                         <label for="part_cost">Part Cost</label>
                     </div>
                     <div class="form-floating">
-                        <input class="form-control no-border" type="text" name="part_manufacturedate" id="part_manufacturedate" required placeholder="Manufacture Date"><b><br><span class="form_error"></span></b>
-                        <label for="part_manufacturedate">Manufacture Date</label>
+                        <input class="form-control no-border" type="date" name="part_manufacturedate" id="part_manufacturedate" required placeholder="Part Manufacture Date"><b><br><span class="form_error"></span></b>
+                        <label for="part_manufacturedate">Part Manufacture Date</label>
                     </div>
                     <div class="form-floating">
-                        <input class="form-control last-field" type="text" name="part_warrantyperiod" id="part_warrantyperiod" required placeholder="Warranty Period"><b><br><span class="form_error"></span></b>
-                        <label for="part_warrantyperiod">Warranty Period</label>
+                        <input class="form-control no-border" type="date" name="part_warrantyperiod" id="part_warrantyperiod" required placeholder="Part Warranty Period"><b><br><span class="form_error"></span></b>
+                        <label for="part_warrantyperiod">Part Warranty Period</label>
                     </div>
                     <input type="submit" class="btn" value="Register" id="submitbutton">
                 </form>
@@ -56,8 +56,9 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $part_name = $_POST['part_name'];
         $part_cost = $_POST['part_cost'];
-        $part_manufacturedate = $_POST['part_manufacturedate'];
-        $part_warrantyperiod = $_POST['part_warrantyperiod'];
+        //reverse value of date
+        $part_manufacturedate = date('Y-m-d', strtotime($_POST['part_manufacturedate']));
+        $part_warrantyperiod = date('Y-m-d', strtotime($_POST['part_warrantyperiod']));
     }
 
     function test_input($data)
@@ -68,6 +69,15 @@
         return $data;
     }
     if ($part_name != "" && $part_cost != "" && $part_manufacturedate != "" && $part_warrantyperiod != "") {
+        //validate part name
+        if(!preg_match("/^[a-zA-Z ]*$/",$part_name)){
+            echo "<script>alert('Only letters and white space allowed in part name');</script>";
+        }
+        //validate part cost
+        if(!preg_match("/^[0-9]*$/",$part_cost)){
+            echo "<script>alert('Only numbers allowed in part cost');</script>";
+        }
+        else{
         $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
         if ($conn == false) {
             die("Connection Failed: " . $conn->connect_error);
@@ -83,7 +93,7 @@
         } else {
             echo "<script>alert('Part Not Added');</script>";
         }
-    }
+    }}
     ?>
 
     <script src="algo.js">

@@ -68,38 +68,18 @@
                         <th scope='col'>Address</th>
                         <th scope='col'>Phone</th>
                         <th scope='col'>Vehicle No</th>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>";
+                      </tr>";
         while ($row = mysqli_fetch_array($result1)) {
-            echo "<section class='intro'>
-  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
-    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
-      <div class='container'>
-        <div class='row justify-content-left'>
-          <div class='col-12'>
-            <div class='card bg-dark shadow-2-strong'>
-              <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table table-dark table-borderless mb-0'>
-                    <thead>
-            echo '<tr>';
-            echo '<td> $row[cust_id]</td>';
-            echo '<td> $row[cust_name]</td>';
-            echo '<td>$row[cust_address]</td>';
-            echo '<td>$row[cust_phone]</td>';
-            echo '<td>$row[cust_vehicle_no]</td>';
-            echo '</tr>';
-                    </thead>
+            echo "<tr>";
+            echo "<td> $row[cust_id]</td>";
+            echo "<td> $row[cust_name]</td>";
+            echo "<td>$row[cust_address]</td>";
+            echo "<td>$row[cust_phone]</td>";
+            echo "<td>$row[cust_vehicle_no]</td>";
+            echo "</tr>";
+        }
+         
+        echo "</thead>
                   </table>
                 </div>
               </div>
@@ -110,8 +90,6 @@
     </div>
   </div>
 </section>";
-            
-        }
         if ($result1 == false) {
             echo "<script>alert('Not Found');</script>";
         }

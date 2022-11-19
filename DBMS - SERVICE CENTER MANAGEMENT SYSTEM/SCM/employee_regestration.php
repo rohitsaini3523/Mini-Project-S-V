@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,11 +15,13 @@
 </head>
 
 <body>
+    <script src="emp_algo.js">
+    </script>
     <center>
         <div class="container">
             <div class="homepage">
                 <h1 class="head">Employee Registration</h1>
-                <form class="login-form" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
+                <form class="login-form" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                     <div class="form-floating">
                         <input class="form-control first-field" type="text" name="emp_name" id="emp_name" required placeholder="Employee name"><b><br><span class="form_error"></span></b>
                         <label for="emp_name">Employee name</label>
@@ -69,25 +70,72 @@
         $data = htmlspecialchars($data);
         return $data;
     }
+    //form validation
     if ($emp_name != "" && $emp_address != "" && $emp_phone != "" && $emp_salary != "" && $emp_emailid != "" && $emp_password != "") {
+        $emp_name = test_input($emp_name);
+        $emp_address = test_input($emp_address);
+        $emp_phone = test_input($emp_phone);
+        $emp_salary = test_input($emp_salary);
+        $emp_emailid = test_input($emp_emailid);
+        $emp_password = test_input($emp_password);
+        //check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $emp_name)) {
+            echo "<script>alert('Only letters and white space allowed in name');</script>";
+        }
+        if (!preg_match("/^[a-zA-Z0-9, ]*$/", $emp_address)) {
+            echo "<script>alert('Only letters and white space allowed in address');</script>";
+        }
+        //check if phone only contains numbers
+        if (!preg_match("/^[0-9]*$/", $emp_phone)) {
+            echo "<script>alert('Only numbers allowed in phone');</script>";
+        }
+        //check if salary only contains numbers
+        if (!preg_match("/^[0-9]*$/", $emp_salary)) {
+            echo "<script>alert('Only numbers allowed in salary');</script>";
+        }
+        //check if email is valid
+        if (!filter_var($emp_emailid, FILTER_VALIDATE_EMAIL)) {
+            echo "<script>alert('Invalid email format');</script>";
+        }
+        //check if password is valid
+        if (strlen($emp_password) < 8) {
+            echo "<script>alert('Password must be atleast 8 characters');</script>";
+        }
+        //check if password is valid
+        if (!preg_match("/[A-Z]/", $emp_password)) {
+            echo "<script>alert('Password must contain atleast one uppercase letter');</script>";
+        }
+        //check if password is valid
+        if (!preg_match("/[a-z]/", $emp_password)) {
+            echo "<script>alert('Password must contain atleast one lowercase letter');</script>";
+        }
+        //check if password is valid
+        if (!preg_match("/[0-9]/", $emp_password)) {
+            echo "<script>alert('Password must contain atleast one number');</script>";
+        }
+        //check if password is valid
+        if (!preg_match("/[!@#$%^&*()_+\-=\[\]{};':\"\\|,.<>\/?]/", $emp_password)) {
+            echo "<script>alert('Password must contain atleast one special character');</script>";
+        }
         $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
         if ($conn == false) {
             die("Connection Failed: " . $conn->connect_error);
         }
-        $query = "select * from customer;";
+        $query = "select * from employee;";
         $result = $conn->query($query);
-        $emp_id = $result->num_rows + 1;
+        //count rows
+        $row_cnt = $result->num_rows;
+        $emp_id = ($row_cnt + 1);
         $query = "INSERT into employee VALUES('$emp_id','$emp_name','$emp_address','$emp_phone','$emp_salary','$emp_emailid','$emp_password');";
         $result = mysqli_query($conn, $query);
         if ($result) {
             echo "<script>alert('Employee Regestration Successful');</script>";
+            header("Location: admin_profile.php");
         } else {
             echo "<script>alert('Employee Regestration Failed');</script>";
-        }
-    }
+        }}
     ?>
-    <script src="algo.js">
-    </script>
+
 </body>
 
 </html>

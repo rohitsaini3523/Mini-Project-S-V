@@ -33,6 +33,26 @@
     $query = "select * from employee;";
     // echo $query;
     $res = $conn->query($query);
+    echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-center'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>
+                      <tr>
+                        <th scope='col'>Employee ID</th>
+                        <th scope='col'>Employee Name</th>
+                        <th scope='col'>Employee Address</th>
+                        <th scope='col'>Employee Phone</th>
+                        <th scope='col'>Employee Salary</th>
+                        <th scope='col'>Employee Email ID</th>
+                        <th scope='col'>Employee Password</th>
+                        </tr>";
     while ($row = $res->fetch_assoc()) {
         $emp_id = $row['emp_id'];
         $emp_name = $row['emp_name'];
@@ -41,24 +61,27 @@
         $emp_salary = $row['emp_salary'];
         $emp_emailid = $row['emp_emailid'];
         $emp_password = $row['emp_password'];
-        echo "<div class='container' style ='padding:1%;'>";
-        echo "<div class='row'>";
-        echo "<div class='col-md-12'>";
-        echo "<div class='card'>";
-        echo "<div class='card-body'>";
-        echo "<h5 class='card-title'>Employee ID: $emp_id</h5>";
-        echo "<h6 class='card-subtitle mb-2 text-muted'>Employee Name: $emp_name</h6>";
-        echo "<p class='card-text'>Employee Address: $emp_address</p>";
-        echo "<p class='card-text'>Employee Phone: $emp_phone</p>";
-        echo "<p class='card-text'>Employee Salary: $emp_salary</p>";
-        echo "<p class='card-text'>Employee Email ID: $emp_emailid</p>";
-        echo "<p class='card-text'>Employee Password: $emp_password</p>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
+        echo "<tr>
+        <td>$emp_id</td>
+        <td>$emp_name</td>
+        <td>$emp_address</td>
+        <td>$emp_phone</td>
+        <td>$emp_salary</td>
+        <td>$emp_emailid</td>   
+        <td>$emp_password</td>
+        </tr>";
     }
+    echo "</thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
     ?>
 
     <script src="algo.js">

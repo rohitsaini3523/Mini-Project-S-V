@@ -51,24 +51,43 @@
         $query = "select * from invoice where invoice_number = $invoice_number;";
         $result = $conn->query($query);
         $result = mysqli_query($conn, $query);
-        echo "<center>";
-        echo "<table border='1' style='width:60% ;'>";
-        echo "<tr>";
-        echo "<th>Invoice Number</th>";
-        echo "<th>Invoice Date</th>";
-        echo "<th>Invoice Amount</th>";
-        echo "<th>Vehicle number</th>";
-        echo "<th>Employee Id</th>";
-        echo "</tr>";
-        while ($row = mysqli_fetch_array($result)) {
-            echo "<tr>";
-            echo "<td>" . $row['invoice_number'] . "</td>";
-            echo "<td>" . $row['invoice_date'] . "</td>";
-            echo "<td>" . $row['invoice_date'] . "</td>";
-            echo "<td>" . $row['vehicle_no'] . "</td>";
-            echo "<td>" . $row['emp_id'] . "</td>";
-            echo "</tr>";
-        }
+        $row = mysqli_fetch_array($result);
+        echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-center'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>
+                      <tr>
+                        <th scope='col'>Invoice Number</th>
+                        <th scope='col'>Invoice Date</th>
+                        <th scope='col'>Invoice Amount</th>
+                        <th scope='col'>Vehicle Number</th>
+                        <th scope='col'>Employee Id</th>
+                      </tr>
+            echo '<tr>';
+            echo '<td> $row[invoice_no]</td>';
+            echo '<td> $row[invoice_date]</td>';
+            echo '<td>$row[invoice_amount]</td>';
+            echo '<td>$row[vehicle_no]</td>';
+            echo '<td>$row[emp_id]</td>';
+            echo '</tr>';</thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
+            
         if ($result == false) {
             echo "<script>alert('Not Found');</script>";
         }

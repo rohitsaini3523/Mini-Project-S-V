@@ -19,7 +19,11 @@
         <div class="container">
             <div class="homepage">
                 <h1 class="head">Update Employee Details </h1>
-                <form class="login-form" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
+                <form class="login-form" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <div class="form-floating" id="">
+                        <input class="form-control first-field" type="text" name="emp_id" id="emp_id" required placeholder="Employee ID"><b><br><span class="form_error"></span></b>
+                        <label for="emp_id">Employee ID</label>
+                    </div>
                     <div class="form-floating">
                         <input class="form-control first-field" type="text" name="emp_name" id="emp_name" required placeholder="Employee name"><b><br><span class="form_error"></span></b>
                         <label for="emp_name">Employee name</label>
@@ -53,6 +57,7 @@
     <?php
     $emp_id = $emp_name = $emp_address = $emp_phone = $emp_salary = $emp_emailid = $emp_password = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $emp_id = $_POST["emp_id"];
         $emp_name = $_POST["emp_name"];
         $emp_address = $_POST["emp_address"];
         $emp_phone = $_POST["emp_phone"];
@@ -69,17 +74,63 @@
         return $data;
     }
     if ($emp_name != "" && $emp_address != "" && $emp_phone != "" && $emp_salary != "" && $emp_emailid != "" && $emp_password != "") {
+        $emp_name = test_input($emp_name);
+        $emp_address = test_input($emp_address);
+        $emp_phone = test_input($emp_phone);
+        $emp_salary = test_input($emp_salary);
+        $emp_emailid = test_input($emp_emailid);
+        $emp_password = test_input($emp_password);
+        //check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $emp_name)) {
+            echo "<script>alert('Only letters and white space allowed in name');</script>";
+        }
+        if (!preg_match("/^[a-zA-Z0-9, ]*$/", $emp_address)) {
+            echo "<script>alert('Only letters and white space allowed in address');</script>";
+        }
+        //check if phone only contains numbers
+        if (!preg_match("/^[0-9]*$/", $emp_phone)) {
+            echo "<script>alert('Only numbers allowed in phone');</script>";
+        }
+        //check if salary only contains numbers
+        if (!preg_match("/^[0-9]*$/", $emp_salary)) {
+            echo "<script>alert('Only numbers allowed in salary');</script>";
+        }
+        //check if email is valid
+        if (!filter_var($emp_emailid, FILTER_VALIDATE_EMAIL)) {
+            echo "<script>alert('Invalid email format');</script>";
+        }
+        //check if password is valid
+        if (strlen($emp_password) < 8) {
+            echo "<script>alert('Password must be atleast 8 characters');</script>";
+        }
+        //check if password is valid
+        if (!preg_match("/[A-Z]/", $emp_password)) {
+            echo "<script>alert('Password must contain atleast one uppercase letter');</script>";
+        }
+        //check if password is valid
+        if (!preg_match("/[a-z]/", $emp_password)) {
+            echo "<script>alert('Password must contain atleast one lowercase letter');</script>";
+        }
+        //check if password is valid
+        if (!preg_match("/[0-9]/", $emp_password)) {
+            echo "<script>alert('Password must contain atleast one number');</script>";
+        }
+        //check if password is valid
+        if (!preg_match("/[!@#$%^&*()_+\-=\[\]{};':\"\\|,.<>\/?]/", $emp_password)) {
+            echo "<script>alert('Password must contain atleast one special character');</script>";
+        }
+        else{
         $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
         if ($conn == false) {
             die("Connection Failed: " . $conn->connect_error);
         }
-        $query = "UPDATE employee SET emp_name='$emp_name',emp_address='$emp_address',emp_phone='$emp_phone',emp_salary='$emp_salary',emp_emailid='$emp_emailid',emp_password='$emp_password' WHERE emp_emailid='$emp_emailid' and emp_password='$emp_password'";
+        $query = "UPDATE employee SET emp_name='$emp_name',emp_address='$emp_address',emp_phone='$emp_phone',emp_salary='$emp_salary',emp_emailid='$emp_emailid',emp_password='$emp_password' WHERE emp_id='$emp_id';";
         $result = mysqli_query($conn, $query);
         if ($result) {
             echo "<script>alert('Employee Upadation Successful');</script>";
         } else {
             echo "<script>alert('Employee Updation Failed');</script>";
-        }
+        }}
     }
     ?>
     <script src="algo.js">

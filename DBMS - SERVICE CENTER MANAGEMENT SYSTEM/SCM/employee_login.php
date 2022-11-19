@@ -33,9 +33,6 @@
             </div>
         </div>
     </center>
-    <script src="algo.js">
-    </script>
-
 </body>
 
 </html>

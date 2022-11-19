@@ -1,4 +1,6 @@
-
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,9 +41,22 @@
     </div>
     </div>
     </form>
-
-    <script src="algo.js">
+    <script>
+        document.getElementById("submitbutton").onclick = function() {
+            var email = document.getElementById("femail").value;
+            var pass = document.getElementById("fpass").value;
+            sessionStorage.setItem("femail", email);
+            sessionStorage.setItem("fpass", pass);
+        }
     </script>
 </body>
 
 </html>
+<?php
+//after click on submit button set session variable
+if (isset($_POST['submit'])) {
+    $_SESSION['femail'] = $_POST['femail'];
+    $_SESSION['fpass'] = $_POST['fpass'];
+    $_SESSION['admin'] = true;
+}
+?>

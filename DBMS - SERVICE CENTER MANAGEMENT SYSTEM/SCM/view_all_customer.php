@@ -49,17 +49,7 @@
                         <th scope='col'>Phone</th>
                         <th scope='col'>Vehicle No</th>
                       </tr>
-                    </thead>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>";
+                    ";
     while ($row = $res->fetch_assoc()) {
         $cust_id = $row['cust_id'];
         $cust_name = $row['cust_name'];
@@ -67,25 +57,18 @@
         $cust_phone = $row['cust_phone'];
         $cust_vehicle_no = $row['cust_vehicle_no'];
         //print customer detail in table
-        echo "<section class='intro'>
-  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
-    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
-      <div class='container'>
-        <div class='row justify-content-left'>
-          <div class='col-12'>
-            <div class='card bg-dark shadow-2-strong'>
-              <div class='card-body'>
-                <div class='table-responsive'>
-                  <table class='table table-dark table-borderless mb-0'>
-                    <thead>
+        echo"
             <tr>
             <td class='justify-content-left'>$cust_id</td>
             <td class='justify-content-left'>$cust_name</td>
             <td class='justify-content-left'>$cust_address</td>
             <td class='justify-content-left'>$cust_phone</td>
             <td class='justify-content-left'>$cust_vehicle_no</td>
-            </tr>
-                    </thead>
+            </tr>";
+                    
+    }
+    echo
+    "</thead>
                   </table>
                 </div>
               </div>
@@ -96,7 +79,6 @@
     </div>
   </div>
 </section>";
-    }
     ?>
 
     <script src="algo.js">

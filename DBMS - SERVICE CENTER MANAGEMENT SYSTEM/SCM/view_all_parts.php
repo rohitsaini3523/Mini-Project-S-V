@@ -35,28 +35,45 @@
     $query = "select * from parts;";
     // echo $query;
     $res = $conn->query($query);
+    echo "<section class='intro'>
+  <div class='bg-image h-100' style='background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');'>
+    <div class='mask d-flex align-items-center h-100' style='background-color: rgba(0,0,0,.25);'>
+      <div class='container'>
+        <div class='row justify-content-center'>
+          <div class='col-12'>
+            <div class='card bg-dark shadow-2-strong'>
+              <div class='card-body'>
+                <div class='table-responsive'>
+                  <table class='table table-dark table-borderless mb-0'>
+                    <thead>
+                      <tr>
+                        <th scope='col'>Part No</th>
+                        <th scope='col'>Part Name</th>
+                        <th scope='col'>Part Cost</th>
+                        <th scope='col'>Part Manufacture Date</th>
+                        <th scope='col'>Part Warranty Period</th>
+                        </tr>";
     while ($row = $res->fetch_assoc()) {
-        $part_no = $row['part_no'];
-        $part_name = $row['part_name'];
-        $part_cost = $row['part_cost'];
-        $part_manufacturedate = $row['part_manufacturedate'];
-        $part_warrantyperiod = $row['part_warrantyperiod'];
-        echo "<div class='container' style ='padding:1%;'>";
-        echo "<div class='row'>";
-        echo "<div class='col-md-12'>";
-        echo "<div class='card'>";
-        echo "<div class='card-body'>";
-        echo "<h5 class='card-title'>Part ID: $part_no</h5>";
-        echo "<h6 class='card-subtitle mb-2 text-muted'>Part Name: $part_name</h6>";
-        echo "<p class='card-text'>Part Cost: $part_cost</p>";
-        echo "<p class='card-text'>Part Manufactured: $part_manufacturedate</p>";
-        echo "<p class='card-text'>Part Warranty Period: $part_warrantyperiod</p>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
+        echo "<tr>";
+        echo "<td>" . $row['part_no'] . "</td>";
+        echo "<td>" . $row['part_name'] . "</td>";
+        echo "<td>" . $row['part_cost'] . "</td>";
+        echo "<td>" . $row['part_manufacturedate'] . "</td>";
+        echo "<td>" . $row['part_warrantyperiod'] . "</td>";
+        echo "</tr>";
     }
+    echo
+    "</thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>";
     ?>
 
     <script src="algo.js">

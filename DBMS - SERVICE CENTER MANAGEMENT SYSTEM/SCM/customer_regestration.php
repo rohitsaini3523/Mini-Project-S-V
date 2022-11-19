@@ -20,7 +20,7 @@
         <div class="container">
             <div class="homepage">
                 <h1 class="head">Customer Registration</h1>
-                <form class="login-form" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return validate_form()">
+                <form class="login-form" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
                     <!-- <div class="form-floating" id="">
                         <input class="form-control" type="text" name="cust_id" id="cust_id" required placeholder="Customer Id"><b><br><span class="form_error"></span></b>
                         <label for="cust_id">Customer Id</label>
@@ -63,7 +63,34 @@
         return $data;
     }
     if($cust_name != "" && $cust_address != "" && $cust_phone != "" && $cust_vehicle_no != "")
-      {  $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
+      {
+        //check if the customer already exists
+        $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
+        $sql = "SELECT * FROM customer WHERE cust_name = '$cust_name' AND cust_address = '$cust_address' AND cust_phone = '$cust_phone' AND cust_vehicle_no = '$cust_vehicle_no'";
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+        if($resultCheck > 0)
+        {
+          echo "<script>alert('Customer already exists!')</script>";
+        }
+        else
+        {
+            //validate the customer name
+            if (!preg_match("/^[a-zA-Z ]*$/",$cust_name)) {
+                echo "<script>alert('Only letters and white space allowed in customer name!')</script>";
+            }
+            //validate the customer address
+            if (!preg_match("/^[a-zA-Z0-9 ]*$/",$cust_address)) {
+                echo "<script>alert('Only letters, numbers and white space allowed in customer address!')</script>";
+            }
+            //validate the customer phone
+            if (!preg_match("/^[0-9]*$/",$cust_phone)) {
+                echo "<script>alert('Only numbers allowed in customer phone!')</script>";
+            }
+            else {
+
+
+        $conn = new MySQLi('localhost', 'root', '', 'vehicle_service_center');
         if ($conn == false) {
             die("Connection Failed: " . $conn->connect_error);
         }
@@ -77,6 +104,7 @@
             header("Location: vehicle_regestration.php");
         } else {
             echo "<script>alert('Customer Regestration Failed');</script>";
+        }}
         }}
     ?>
     <script src="algo.js">

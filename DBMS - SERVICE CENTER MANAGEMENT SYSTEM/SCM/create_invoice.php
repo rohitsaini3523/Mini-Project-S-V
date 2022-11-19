@@ -24,8 +24,8 @@
                         <input class="form-control first-field" type="text" name="invoice_number" id="invoice_number" required placeholder="Invoice Number"><b><br><span class="form_error"></span></b>
                         <label for="invoice_number">Invoice Number</label>
                     </div>
-                    <div class="form-floating" id="">
-                        <input class="form-control no-border" type="text" name="invoice_date" id="invoice_date" required placeholder="Invoice Date"><b><br><span class="form_error"></span></b>
+                    <div class="form-floating">
+                        <input class="form-control" type="date" name="invoice_date" id="invoice_date" required placeholder="Invoice Date"><b><br><span class="form_error"></span></b>
                         <label for="invoice_date">Invoice Date</label>
                     </div>
                     <div class="form-floating" id="">
@@ -49,7 +49,8 @@
     $invoice_number = $invoice_date = $invoice_amount = $vehicle_no = $emp_id = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $invoice_number = test_input($_POST["invoice_number"]);
-        $invoice_date = test_input($_POST["invoice_date"]);
+        //reverse invoice_date
+        $invoice_date = date('Y-m-d', strtotime($_POST['invoice_date']));;
         $invoice_amount = test_input($_POST["invoice_amount"]);
         $vehicle_no = test_input($_POST["vehicle_number"]);
         $emp_id = test_input($_POST["emp_id"]);

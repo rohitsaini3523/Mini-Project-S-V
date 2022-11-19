@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +21,7 @@
             <div class="head">
                 Admin Login
             </div>
-            <form class="login-form" name="myform" method="post" action="admin_profile.php">
+            <form class="login-form" name="myform" method="post" action ="admin_profile.php" >
                 <div class="form-floating" id="email">
                     <input class="form-control first-field" type="email" name="femail" id="femail" placeholder="E-mail" required><b><br><span class="form_error"> </span></b>
                     <label for="femail">E-mail</label>
@@ -41,22 +38,6 @@
     </div>
     </div>
     </form>
-    <script>
-        document.getElementById("submitbutton").onclick = function() {
-            var email = document.getElementById("femail").value;
-            var pass = document.getElementById("fpass").value;
-            sessionStorage.setItem("femail", email);
-            sessionStorage.setItem("fpass", pass);
-        }
-    </script>
 </body>
 
 </html>
-<?php
-//after click on submit button set session variable
-if (isset($_POST['submit'])) {
-    $_SESSION['femail'] = $_POST['femail'];
-    $_SESSION['fpass'] = $_POST['fpass'];
-    $_SESSION['admin'] = true;
-}
-?>

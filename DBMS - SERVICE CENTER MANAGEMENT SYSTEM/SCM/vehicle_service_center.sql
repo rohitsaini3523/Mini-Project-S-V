@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2022 at 08:25 AM
+-- Generation Time: Nov 19, 2022 at 02:17 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -62,6 +62,7 @@ INSERT INTO `customer` (`cust_id`, `cust_name`, `cust_address`, `cust_phone`, `c
 (2, 'Vatsal', 'Pune', '1234567890', 'UK09U9128'),
 (3, 'Sunio', 'Doremon', '1234567899', '12324567'),
 (6, 'qwrt', 'wqrt', '25612376', '123653621'),
+(7, 'Rohit', 'Pune', '956000766', 'UK06Y9694'),
 (8, 'Dhruv', 'Pune', '1234567890', 'MH09IL1289'),
 (9, 'qwooo', 'qwoo', 'qwoo', 'qwooo');
 
@@ -98,7 +99,8 @@ INSERT INTO `cust_log` (`log_id`, `cust_id`, `action`, `cdate`) VALUES
 (1, 8, 'Inserted', '2022-11-08 14:41:08'),
 (2, 9, 'Inserted', '2022-11-08 14:41:43'),
 (3, 6, 'Inserted', '2022-11-08 14:42:31'),
-(4, 9, 'Updated', '2022-11-08 14:47:21');
+(4, 9, 'Updated', '2022-11-08 14:47:21'),
+(5, 7, 'Inserted', '2022-11-19 17:34:04');
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`emp_id`, `emp_name`, `emp_address`, `emp_phone`, `emp_salary`, `emp_emailid`, `emp_password`) VALUES
-(1, 'Rohit', 'vadodara', '9568000766', 150000, 'rohitsaini3523@gmail.com', 'jinga');
+(1, 'Rohit Saini', 'Pune', '9568000766', 140000, 'rohitsaini@gmail.com', 'Rhit866*');
 
 --
 -- Triggers `employee`
@@ -148,6 +150,25 @@ CREATE TABLE `emp_log` (
   `edate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `emp_log`
+--
+
+INSERT INTO `emp_log` (`log_id`, `cust_id`, `action`, `edate`) VALUES
+(2, 7, 'Inserted', '2022-11-19 01:52:34'),
+(3, 2, 'Inserted', '2022-11-19 01:56:46'),
+(4, 3, 'Inserted', '2022-11-19 15:07:08'),
+(5, 1, 'Inserted', '2022-11-19 15:08:33'),
+(6, 2, 'Inserted', '2022-11-19 15:18:01'),
+(7, 1, 'Inserted', '2022-11-19 15:19:30'),
+(8, 1, 'Inserted', '2022-11-19 15:22:34'),
+(9, 1, 'Inserted', '2022-11-19 15:23:52'),
+(10, 2, 'Inserted', '2022-11-19 15:24:55'),
+(11, 3, 'Inserted', '2022-11-19 15:25:47'),
+(12, 2, 'Updated', '2022-11-19 17:27:20'),
+(13, 1, 'Inserted', '2022-11-19 17:39:41'),
+(14, 1, 'Inserted', '2022-11-19 17:53:30');
+
 -- --------------------------------------------------------
 
 --
@@ -167,9 +188,7 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`invoice_number`, `invoice_date`, `invoice_amount`, `vehicle_no`, `emp_id`) VALUES
-(1, '2022-11-03', 12, 'GJ06LA6989', 1),
-(142, '2022-02-13', 123, 'GJ06LA6989', 1),
-(176, '2022-02-13', 123, 'GJ06LA6989', 1);
+(100, '2022-11-11', 1800, 'GJ06LA6989', 1);
 
 -- --------------------------------------------------------
 
@@ -194,7 +213,8 @@ INSERT INTO `parts` (`part_no`, `part_name`, `part_cost`, `part_manufacturedate`
 (2, 'starter', 230, '2021-11-02', '2022-11-02'),
 (3, 'Tyre', 1200, '2022-11-09', '2025-11-09'),
 (4, 'qwr', 2, '2022-11-09', '2025-11-09'),
-(5, 'Tyre', 1299, '2022-11-09', '2025-11-09');
+(5, 'Tyre', 1299, '2022-11-09', '2025-11-09'),
+(6, 'Jinga', 1600, '2022-11-08', '2022-11-23');
 
 --
 -- Triggers `parts`
@@ -229,7 +249,8 @@ CREATE TABLE `parts_quantity` (
 
 INSERT INTO `parts_quantity` (`part_id`, `parts_quantity`) VALUES
 (4, 10),
-(5, 10);
+(5, 10),
+(6, 10);
 
 -- --------------------------------------------------------
 
@@ -250,7 +271,8 @@ CREATE TABLE `part_log` (
 
 INSERT INTO `part_log` (`log_id`, `part_no`, `action`, `pdate`) VALUES
 (1, 4, 'created', '2022-11-15 00:43:52'),
-(2, 5, 'created', '2022-11-15 00:44:08');
+(2, 5, 'created', '2022-11-15 00:44:08'),
+(3, 6, 'created', '2022-11-19 17:21:39');
 
 -- --------------------------------------------------------
 
@@ -301,6 +323,8 @@ CREATE TABLE `vehicle` (
 --
 
 INSERT INTO `vehicle` (`vehicle_number`, `vehicle_type`, `RCbook`, `customer_id`) VALUES
+('GJ06LA1000', '4', '123456789', 2),
+('GJ06LA1001', '2 Wheeler', '123456789', 2),
 ('GJ06LA6989', 'Activa 125', '123741h474', 1);
 
 --
@@ -379,25 +403,25 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `cust_log`
 --
 ALTER TABLE `cust_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `emp_log`
 --
 ALTER TABLE `emp_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `part_log`
 --
 ALTER TABLE `part_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
